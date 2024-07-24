@@ -1,79 +1,20 @@
-import java.util.List;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 public class GestorListaReproduccion {
+	private List<Cancion> playlist;
     private Trie trie;
 
     public GestorListaReproduccion() {
+        playlist = new ArrayList<>();
         trie = new Trie();
     }
 
-    public void agregarCancion(Cancion cancion) {
-        trie.agregarCancion(cancion);
-    }
-
-    public void eliminarCancion(String trackName) {
-        trie.eliminarCancion(trackName);
-    }
-
-    public void cambiarOrden(String trackName, int nuevaPosicion) {
-        // Implementación de cambio de orden si es necesario
-    }
-
-    public void reproduccionAleatoria() {
-        List<Cancion> canciones = trie.obtenerTodasLasCanciones();
-        // Implementar reproducción aleatoria
-    }
-
-    public void mostrarCancionesPorPopularidad() {
-        List<Cancion> canciones = trie.obtenerTodasLasCanciones();
-        // Ordenar por popularidad y mostrar
-    }
-
-    public void mostrarCancionesPorAnio(int anio) {
-        List<Cancion> canciones = trie.obtenerTodasLasCanciones();
-        // Filtrar por año y mostrar
-    }
-
-    public static void main(String[] args) {
-        GestorListaReproduccion gestor = new GestorListaReproduccion();
-        Scanner scanner = new Scanner(System.in);
-
-        // Ejemplo de uso
-        while (true) {
-            System.out.println("1. Agregar Cancion");
-            System.out.println("2. Eliminar Cancion");
-            System.out.println("3. Cambiar Orden");
-            System.out.println("4. Reproducción Aleatoria");
-            System.out.println("5. Mostrar Canciones por Popularidad");
-            System.out.println("6. Mostrar Canciones por Año");
-            System.out.println("7. Salir");
-            int opcion = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (opcion) {
-                case 1:
-                    // Agregar canción
-                    break;
-                case 2:
-                    // Eliminar canción
-                    break;
-                case 3:
-                    // Cambiar orden
-                    break;
-                case 4:
-                    // Reproducción aleatoria
-                    break;
-                case 5:
-                    // Mostrar canciones por popularidad
-                    break;
-                case 6:
-                    // Mostrar canciones por año
-                    break;
-                case 7:
-                    System.exit(0);
-                    break;
-            }
-        }
-    }
+    // Método para agregar una canción a la lista de reproducción
+    public void addSong(Cancion song) {
+        playlist.add(song);
+        trie.insert(song);
+    } 
 }
