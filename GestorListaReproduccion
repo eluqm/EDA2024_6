@@ -105,4 +105,17 @@ public class GestorListaReproduccion {
             return 0.0; // O puedes manejar el valor de error como desees
         }
     }
+   // Método principal para probar el programa
+    public static void main(String[] args) {
+    	GestorListaReproduccion manager = new GestorListaReproduccion();
+
+        // Leer canciones desde un archivo CSV
+        String filePath = "E:/UNSA/EDA - Final/spotify_data.csv"; // Cambia esto por la ruta de tu archivo CSV
+        manager.readSongsFromCSV(filePath);
+
+        // Imprimimos la lista de reproducción
+        System.out.println("Lista de reproducción:");
+        manager.printPlaylist();
+
+    }
 }
