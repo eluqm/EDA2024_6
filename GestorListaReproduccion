@@ -58,4 +58,34 @@ public class GestorListaReproduccion {
             br.readLine(); // Saltar la primera línea (encabezados)
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
+// Manejar valores posibles nulos o vacíos y convertir a los tipos correctos
+                String artistName = values[1];
+                String trackName = values[2];
+                String trackId = values[3]; // track_id no se convierte a número
+                int popularity = parseIntSafe(values[4]);
+                int year = parseIntSafe(values[5]);
+                String genre = values[6];
+                double danceability = parseDoubleSafe(values[7]);
+                double energy = parseDoubleSafe(values[8]);
+                int key = parseIntSafe(values[9]);
+                double loudness = parseDoubleSafe(values[10]);
+                int mode = parseIntSafe(values[11]);
+                double speechiness = parseDoubleSafe(values[12]);
+                double acousticness = parseDoubleSafe(values[13]);
+                double instrumentalness = parseDoubleSafe(values[14]);
+                double liveness = parseDoubleSafe(values[15]);
+                double valence = parseDoubleSafe(values[16]);
+                double tempo = parseDoubleSafe(values[17]);
+                double durationMs = parseDoubleSafe(values[18]);
+                int timeSignature = parseIntSafe(values[19]);
+
+                Cancion song = new Cancion(artistName, trackName, trackId, popularity, year, genre, danceability,
+                        energy, key, loudness, mode, speechiness, acousticness,
+                        instrumentalness, liveness, valence, tempo, durationMs, timeSignature);
+                addSong(song);
+ }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
