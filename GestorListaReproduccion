@@ -45,4 +45,17 @@ public class GestorListaReproduccion {
         Random random = new Random();
         return playlist.get(random.nextInt(playlist.size()));
     }
+   // Método para imprimir la lista de reproducción
+    public void printPlaylist() {
+        for (Cancion song : playlist) {
+            System.out.println(song);
+        }
+    }   
+   // Método para leer canciones desde un archivo CSV y agregarlas al trie
+    public void readSongsFromCSV(String filePath) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            br.readLine(); // Saltar la primera línea (encabezados)
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
 }
