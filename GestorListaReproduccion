@@ -29,4 +29,20 @@ public class GestorListaReproduccion {
         }
         trie.delete(trackName, trackId);
     }
+   // Método para cambiar el orden de las canciones en la lista
+    public void changeOrder(int oldIndex, int newIndex) {
+        if (oldIndex < 0 || oldIndex >= playlist.size() || newIndex < 0 || newIndex >= playlist.size()) {
+            throw new IndexOutOfBoundsException("Índices fuera de rango");
+        }
+        Cancion song = playlist.remove(oldIndex);
+        playlist.add(newIndex, song);
+    }
+   // Método para reproducir una canción de manera aleatoria
+    public Cancion playRandom() {
+        if (playlist.isEmpty()) {
+            return null;
+        }
+        Random random = new Random();
+        return playlist.get(random.nextInt(playlist.size()));
+    }
 }
