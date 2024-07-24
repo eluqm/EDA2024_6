@@ -88,4 +88,21 @@ public class GestorListaReproduccion {
             e.printStackTrace();
         }
     }
+   // Método auxiliar para parsear enteros con manejo de excepciones
+    private int parseIntSafe(String value) {
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            return 0; // O puedes manejar el valor de error como desees
+        }
+    }
+
+    // Método auxiliar para parsear doubles con manejo de excepciones
+    private double parseDoubleSafe(String value) {
+        try {
+            return Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            return 0.0; // O puedes manejar el valor de error como desees
+        }
+    }
 }
