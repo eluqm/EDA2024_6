@@ -17,4 +17,16 @@ public class GestorListaReproduccion {
         playlist.add(song);
         trie.insert(song);
     } 
+   // Método para eliminar una canción de la lista de reproducción
+    public void removeSong(String trackName, String trackId) {
+        Iterator<Cancion> iterator = playlist.iterator();
+        while (iterator.hasNext()) {
+        	Cancion song = iterator.next();
+            if (song.getTrackName().equalsIgnoreCase(trackName) && song.toString().contains(trackId)) {
+                iterator.remove();
+                break;
+            }
+        }
+        trie.delete(trackName, trackId);
+    }
 }
