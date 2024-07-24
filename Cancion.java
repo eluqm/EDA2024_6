@@ -42,11 +42,10 @@ public class Cancion {
         this.duration_ms = duration_ms;
         this.time_signature = time_signature;
     }
+    
+    // Getters:
 
-
-    // Getters
-
-    public String getArtistName() {
+       public String getArtistName() {
         return artist_name;
     }
 
@@ -77,8 +76,7 @@ public class Cancion {
     public double getEnergy() {
         return energy;
     }
-
-    public int getKey() {
+   public int getKey() {
         return key;
     }
 
@@ -120,5 +118,5 @@ public class Cancion {
 
     public int getTimeSignature() {
         return time_signature;
-    }
+    }
 }
