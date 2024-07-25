@@ -8,7 +8,7 @@ class InterfazReproductorMusica:
         self.ventana.title("Reproductor de Música")
         self.ventana.geometry("800x600")
 
-        # Marco para las canciones disponibles
+        # Espacio Canciones disponibles
         self.frame_canciones = tk.Frame(self.ventana)
         self.frame_canciones.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
@@ -34,7 +34,7 @@ class InterfazReproductorMusica:
         self.lista_canciones.pack(fill=tk.BOTH, expand=True)
         self.scrollbar_canciones.config(command=self.lista_canciones.yview)
 
-        # Marco para la lista de reproducción y los botones de ordenamiento
+        # Marco de la Lista de Reproducción y botones ordenar
         self.frame_playlist_ordenamiento = tk.Frame(self.ventana)
         self.frame_playlist_ordenamiento.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
 
@@ -54,6 +54,42 @@ class InterfazReproductorMusica:
         self.frame_ordenamiento = tk.Frame(self.frame_playlist_ordenamiento)
         self.frame_ordenamiento.pack(side=tk.LEFT, padx=10)
 
+        self.boton_ordenar_popularidad_asc = tk.Button(self.frame_ordenamiento, text="Popularidad Asc", command=lambda: self.ordenar_playlist('popularity'))
+        self.boton_ordenar_popularidad_asc.pack(pady=2)
+
+        self.boton_ordenar_popularidad_desc = tk.Button(self.frame_ordenamiento, text="Popularidad Desc", command=lambda: self.ordenar_playlist('popularity', True))
+        self.boton_ordenar_popularidad_desc.pack(pady=2)
+
+        self.boton_ordenar_ano_asc = tk.Button(self.frame_ordenamiento, text="Año Asc", command=lambda: self.ordenar_playlist('year'))
+        self.boton_ordenar_ano_asc.pack(pady=2)
+
+        self.boton_ordenar_ano_desc = tk.Button(self.frame_ordenamiento, text="Año Desc", command=lambda: self.ordenar_playlist('year', True))
+        self.boton_ordenar_ano_desc.pack(pady=2)
+
+        self.boton_ordenar_duracion_asc = tk.Button(self.frame_ordenamiento, text="Duración Asc", command=lambda: self.ordenar_playlist('duration_ms'))
+        self.boton_ordenar_duracion_asc.pack(pady=2)
+
+        self.boton_ordenar_duracion_desc = tk.Button(self.frame_ordenamiento, text="Duración Desc", command=lambda: self.ordenar_playlist('duration_ms', True))
+        self.boton_ordenar_duracion_desc.pack(pady=2)
+
+        # Botones Accion
+        self.frame_botones = tk.Frame(self.ventana)
+        self.frame_botones.pack(pady=10)
+
+        self.boton_agregar = tk.Button(self.frame_botones, text="Agregar", command=self.agregar_cancion)
+        self.boton_agregar.pack(side=tk.LEFT, padx=5)
+
+        self.boton_eliminar = tk.Button(self.frame_botones, text="Eliminar", command=self.eliminar_cancion)
+        self.boton_eliminar.pack(side=tk.LEFT, padx=5)
+
+        self.boton_cambiar_orden = tk.Button(self.frame_botones, text="Cambiar Orden", command=self.cambiar_orden)
+        self.boton_cambiar_orden.pack(side=tk.LEFT, padx=5)
+
+        self.boton_reproduccion_aleatoria = tk.Button(self.frame_botones, text="Reproducción Aleatoria", command=self.reproduccion_aleatoria)
+        self.boton_reproduccion_aleatoria.pack(side=tk.LEFT, padx=5)
+
+        self.actualizar_lista_canciones()
+        self.actualizar_playlist()
 
 def agregar_cancion(self):
         seleccion = self.lista_canciones.curselection()
