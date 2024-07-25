@@ -110,3 +110,10 @@ def eliminar_cancion(self):
             messagebox.showinfo("Eliminando ...", "Canción eliminada de la playlist.")
         else:
             messagebox.showerror("Error", "Seleccione una canción para eliminar.")
+            
+ def cambiar_orden(self):
+        posicion_actual = simpledialog.askinteger("Cambiar Orden", "Ingrese la posición actual de la canción:")
+        nueva_posicion = simpledialog.askinteger("Cambiar Orden", "Ingrese la nueva posición de la canción:")
+        if posicion_actual is not None and nueva_posicion is not None:
+            self.reproductor.cambiar_orden(posicion_actual-1, nueva_posicion-1)
+            self.actualizar_playlist()
