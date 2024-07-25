@@ -121,3 +121,9 @@ def eliminar_cancion(self):
 def reproduccion_aleatoria(self):
         self.reproductor.reproduccion_aleatoria()
         self.actualizar_playlist()
+
+
+ def buscar_canciones(self):
+        filtro = self.entry_buscar.get().lower()
+        canciones_filtradas = [cancion for cancion in self.reproductor.obtener_canciones_disponibles() if filtro in cancion.track_name.lower()]
+        self.actualizar_lista_canciones(canciones_filtradas)
