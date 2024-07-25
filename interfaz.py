@@ -117,3 +117,7 @@ def eliminar_cancion(self):
         if posicion_actual is not None and nueva_posicion is not None:
             self.reproductor.cambiar_orden(posicion_actual-1, nueva_posicion-1)
             self.actualizar_playlist()
+
+def reproduccion_aleatoria(self):
+        self.reproductor.reproduccion_aleatoria()
+        self.actualizar_playlist()
