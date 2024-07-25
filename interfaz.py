@@ -100,4 +100,13 @@ def agregar_cancion(self):
             messagebox.showinfo("Agregando ...", f"La Canción '{cancion.track_name}' fue añadida a la playlist.")
         else:
             messagebox.showerror("Error", "Seleccione una canción para agregar.")
-
+            
+def eliminar_cancion(self):
+        seleccion = self.lista_playlist.curselection()
+        if seleccion:
+            track_id = self.reproductor.obtener_playlist()[seleccion[0]].track_id
+            self.reproductor.eliminar_cancion(track_id)
+            self.actualizar_playlist()
+            messagebox.showinfo("Eliminando ...", "Canción eliminada de la playlist.")
+        else:
+            messagebox.showerror("Error", "Seleccione una canción para eliminar.")
