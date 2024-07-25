@@ -5,8 +5,12 @@ class ReproductorMusica:
     def __init__(self):
         self.playlist = []
         self.canciones_disponibles = []
+        
+    def agregar_cancion(self, cancion):
+        self.playlist.append(cancion)
 
-
+    def eliminar_cancion(self, track_id):
+        self.playlist = [cancion for cancion in self.playlist if cancion.track_id != track_id]
 
 
     def ordenar_playlist(self, key, reverse=False):
