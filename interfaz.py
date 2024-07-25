@@ -142,3 +142,6 @@ def reproduccion_aleatoria(self):
         self.lista_playlist.delete(0, tk.END)
         for cancion in self.reproductor.obtener_playlist():
             self.lista_playlist.insert(tk.END, str(cancion))
+
+    def iniciar(self):
+        self.ventana.mainloop()
