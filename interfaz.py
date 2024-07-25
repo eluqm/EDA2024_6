@@ -53,3 +53,15 @@ class InterfazReproductorMusica:
 
         self.frame_ordenamiento = tk.Frame(self.frame_playlist_ordenamiento)
         self.frame_ordenamiento.pack(side=tk.LEFT, padx=10)
+
+
+def agregar_cancion(self):
+        seleccion = self.lista_canciones.curselection()
+        if seleccion:
+            cancion = self.reproductor.obtener_canciones_disponibles()[seleccion[0]]
+            self.reproductor.agregar_cancion(cancion)
+            self.actualizar_playlist()
+            messagebox.showinfo("Agregando ...", f"La Canción '{cancion.track_name}' fue añadida a la playlist.")
+        else:
+            messagebox.showerror("Error", "Seleccione una canción para agregar.")
+
