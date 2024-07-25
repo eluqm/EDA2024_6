@@ -17,6 +17,9 @@ class ReproductorMusica:
             cancion = self.playlist.pop(posicion_actual)
             self.playlist.insert(nueva_posicion, cancion)
 
+    def reproduccion_aleatoria(self):
+        random.shuffle(self.playlist)
+
     def ordenar_playlist(self, key, reverse=False):
         self.playlist.sort(key=lambda cancion: getattr(cancion, key), reverse=reverse)
 
