@@ -12,6 +12,10 @@ class ReproductorMusica:
     def eliminar_cancion(self, track_id):
         self.playlist = [cancion for cancion in self.playlist if cancion.track_id != track_id]
 
+    def cambiar_orden(self, posicion_actual, nueva_posicion):
+        if 0 <= posicion_actual < len(self.playlist) and 0 <= nueva_posicion < len(self.playlist):
+            cancion = self.playlist.pop(posicion_actual)
+            self.playlist.insert(nueva_posicion, cancion)
 
     def ordenar_playlist(self, key, reverse=False):
         self.playlist.sort(key=lambda cancion: getattr(cancion, key), reverse=reverse)
