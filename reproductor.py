@@ -28,3 +28,15 @@ class ReproductorMusica:
 
     def obtener_playlist(self):
         return self.playlist
+        
+    def leer_canciones_desde_csv(nombre_archivo, reproductor):
+    with open(nombre_archivo, newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            cancion = Cancion(
+                row['artist_name'], row['track_name'], row['track_id'], row['popularity'], row['year'], row['genre'], 
+                row['danceability'], row['energy'], row['key'], row['loudness'], row['mode'], row['speechiness'], 
+                row['acousticness'], row['instrumentalness'], row['liveness'], row['valence'], row['tempo'], 
+                row['duration_ms'], row['time_signature']
+            )
+            reproductor.canciones_disponibles.append(cancion)
