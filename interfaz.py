@@ -130,3 +130,15 @@ def reproduccion_aleatoria(self):
         filtro = self.entry_buscar.get().lower()
         canciones_filtradas = [cancion for cancion in self.reproductor.obtener_canciones_disponibles() if filtro in cancion.track_name.lower()]
         self.actualizar_lista_canciones(canciones_filtradas)
+
+    def actualizar_lista_canciones(self, canciones=None):
+        self.lista_canciones.delete(0, tk.END)
+        if canciones is None:
+            canciones = self.reproductor.obtener_canciones_disponibles()
+        for cancion in canciones:
+            self.lista_canciones.insert(tk.END, str(cancion))
+
+    def actualizar_playlist(self):
+        self.lista_playlist.delete(0, tk.END)
+        for cancion in self.reproductor.obtener_playlist():
+            self.lista_playlist.insert(tk.END, str(cancion))
