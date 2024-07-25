@@ -122,6 +122,9 @@ def reproduccion_aleatoria(self):
         self.reproductor.reproduccion_aleatoria()
         self.actualizar_playlist()
 
+    def ordenar_playlist(self, key, reverse=False):
+        self.reproductor.ordenar_playlist(key, reverse)
+        self.actualizar_playlist()
 
  def buscar_canciones(self):
         filtro = self.entry_buscar.get().lower()
